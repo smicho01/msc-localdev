@@ -5,7 +5,7 @@ db_schema=$1
 
 if [ -z "${db_schema}" ] ; then
   echo 'Database schema name must be specified as a command argument in Docker compose file'
-  echo 'e.g. command: ["students"]'
+  echo 'e.g. command: ["users"]'
   exit 1
 fi
 

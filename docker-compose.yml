@@ -49,7 +49,7 @@ services:
   # Create DB schemas
   students-schema-creation:
     <<: *db-schema-creation
-    command: ["students"]
+    command: ["users"]
 
   items-schema-creation:
     <<: *db-schema-creation
