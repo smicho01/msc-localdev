@@ -1,0 +1,64 @@
+version: '3.3'
+
+x-healthcheck-settings: &healthcheck-settings
+  interval: 10s
+  retries: 10
+  start_period: 15s
+  timeout: 5s
+
+x-db-env-conf: &db-env
+  DATABASE_NAME: ${DATABASE_NAME}
+  DATABASE_USERNAME: ${PSQL_USER}
+  DATABASE_PASSWORD: ${PSQL_PASSWORD}
+  DATABASE_ENDPOINT: postgres
+  DATABASE_PORT: 5432
+
+x-db-schema-creation: &db-schema-creation
+  image: quay.io/ukhomeofficedigital/postgres:latest
+  volumes:
+    - ./sql:/sql
+  environment:
+    <<: *db-env
+  entrypoint: ["/sql/create-schema.sh"]
+  depends_on:
+    postgres:
+      condition: service_healthy
+  networks:
+    - msc
+
+services:
+  postgres:
+    image: postgres:13.1
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=${PSQL_PASSWORD}
+      - POSTGRES_USER=${PSQL_USER}
+      - POSTGRES_DB=${DATABASE_NAME}
+    networks:
+      - msc
+    healthcheck:
+      test: ["CMD", "psql", "-U", "${PSQL_USER}", "-d", "${DATABASE_NAME}"]
+      interval: 500ms
+      timeout: 1s
+      retries: 5
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+
+  # Create DB schemas
+  students-schema-creation:
+    <<: *db-schema-creation
+    command: ["students"]
+
+  items-schema-creation:
+    <<: *db-schema-creation
+    command: ["items"]
+
+volumes:
+  dbdata:
+    driver: local
+
+networks:
+  msc:
+    driver: bridge
