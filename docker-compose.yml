@@ -55,6 +55,10 @@ services:
     <<: *db-schema-creation
     command: ["items"]
 
+  uilogs-schema-creation:
+    <<: *db-schema-creation
+    command: ["uilogs"]
+
 volumes:
   dbdata:
     driver: local
