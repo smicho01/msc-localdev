@@ -78,7 +78,7 @@ services:
       - msc
 
   items-database-migrations:
-    image: sever3d/academichain-items-database
+    image: sever3d/academichain-item-database
     command:
       - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
