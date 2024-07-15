@@ -1,0 +1,52 @@
+version: '3'
+services:
+  zookeeper-test:
+    image: confluentinc/cp-zookeeper:7.2.1
+    container_name: zookeeper-test
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2182
+    ports:
+      - "2182:2182"
+
+
+  kafka1-test:
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: kafka1-test
+    ports:
+      - "9997:9997"
+    depends_on:
+      - zookeeper-test
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-test:2182
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: EXTERNAL:PLAINTEXT,INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: EXTERNAL://sever3d.synology.me:9997,INTERNAL://kafka1-test:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+
+  kafka2-test:
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: kafka2-test
+    ports:
+      - "9998:9998"
+    depends_on:
+      - zookeeper-test
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-test:2182
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: EXTERNAL:PLAINTEXT,INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: EXTERNAL://sever3d.synology.me:9998,INTERNAL://kafka2-test:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+
+  kafka3-test:
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: kafka3-test
+    ports:
+      - "9999:9999"
+    depends_on:
+      - zookeeper-test
+    environment:
+      KAFKA_BROKER_ID: 3
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-test:2182
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: EXTERNAL:PLAINTEXT,INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: EXTERNAL://sever3d.synology.me:9999,INTERNAL://kafka3-test:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
