@@ -12,7 +12,7 @@ x-db-env-conf: &db-env
   DATABASE_PORT: 5432
 
 x-db-schema-creation: &db-schema-creation
-  image: quay.io/ukhomeofficedigital/postgres:latest
+  image: postgres:13.1
   volumes:
     - ./sql:/sql
   environment:
@@ -65,6 +65,7 @@ services:
   # DB migrations
   users-database-migrations:
     image: sever3d/academichain-user-database
+    pull_policy: always
     command:
       - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
@@ -79,6 +80,7 @@ services:
 
   items-database-migrations:
     image: sever3d/academichain-item-database
+    pull_policy: always
     command:
       - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
@@ -93,6 +95,7 @@ services:
 
   core-database-migrations:
     image: sever3d/academichain-core-database
+    pull_policy: always
     command:
       - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
@@ -107,6 +110,7 @@ services:
 
   ui-database-migrations:
     image: sever3d/academichain-ui-database
+    pull_policy: always
     command:
       - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
@@ -122,6 +126,7 @@ services:
   # Services
   academi-core-service:
     image: sever3d/academichain-core-service
+    pull_policy: always
     ports:
       - "9090:9090"
     environment:
@@ -142,6 +147,7 @@ services:
 
   academi-user-service:
     image: sever3d/academichain-user-service
+    pull_policy: always
     ports:
       - "9091:9091"
     environment:
@@ -159,6 +165,7 @@ services:
 
   academi-item-service:
     image: sever3d/academichain-item-service
+    pull_policy: always
     ports:
       - "9092:9092"
     environment:
