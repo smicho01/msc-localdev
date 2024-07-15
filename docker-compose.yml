@@ -1,5 +1,3 @@
-version: '3.3'
-
 x-healthcheck-settings: &healthcheck-settings
   interval: 10s
   retries: 10
