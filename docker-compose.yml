@@ -25,7 +25,6 @@ x-db-schema-creation: &db-schema-creation
     - msc
 
 
-
 services:
   postgres:
     image: ${POSTGRES_IMAGE}
