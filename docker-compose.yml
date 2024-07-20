@@ -12,7 +12,7 @@ x-db-env-conf: &db-env
   DATABASE_PORT: 5432
 
 x-db-schema-creation: &db-schema-creation
-  image: postgres:13.1
+  image: ${POSTGRES_IMAGE}
   volumes:
     - ./sql:/sql
   environment:
@@ -24,9 +24,11 @@ x-db-schema-creation: &db-schema-creation
   networks:
     - msc
 
+
+
 services:
   postgres:
-    image: postgres:13.1
+    image: ${POSTGRES_IMAGE}
     ports:
       - "5432:5432"
     environment:
@@ -49,7 +51,6 @@ services:
   user-schema-creation:
     <<: *db-schema-creation
     command: ["users"]
-    restart: always
 
   items-schema-creation:
     <<: *db-schema-creation
@@ -128,13 +129,14 @@ services:
   # Services
   academi-core-service:
     image: sever3d/academichain-core-service
-    pull_policy: always
+    #pull_policy: always
     ports:
       - "9090:9090"
     environment:
       - POSTGRESHOST=${POSTGRESHOST}
       - POSTGRESUSER=${POSTGRESUSER}
       - POSTGRESPASSWORD=${POSTGRESPASSWORD}
+      - POSTGRESDB=${POSTGRESDB}
       - USER_SERVICE_URL=${USER_SERVICE_URL}
       - ITEM_SERVICE_URL=${ITEM_SERVICE_URL}
       - KEYCLOAK_URL=${KEYCLOAK_URL}
@@ -150,13 +152,14 @@ services:
 
   academi-user-service:
     image: sever3d/academichain-user-service
-    pull_policy: always
+    #pull_policy: always
     ports:
       - "9091:9091"
     environment:
       - POSTGRESHOST=${POSTGRESHOST}
       - POSTGRESUSER=${POSTGRESUSER}
       - POSTGRESPASSWORD=${POSTGRESPASSWORD}
+      - POSTGRESDB=${POSTGRESDB}
       - CORE_SERVICE_URL=${CORE_SERVICE_URL}
       - ITEM_SERVICE_URL=${ITEM_SERVICE_URL}
       - KEYCLOAK_URL=${KEYCLOAK_URL}
@@ -169,13 +172,14 @@ services:
 
   academi-item-service:
     image: sever3d/academichain-item-service
-    pull_policy: always
+    #pull_policy: always
     ports:
       - "9092:9092"
     environment:
       - POSTGRESHOST=${POSTGRESHOST}
       - POSTGRESUSER=${POSTGRESUSER}
       - POSTGRESPASSWORD=${POSTGRESPASSWORD}
+      - POSTGRESDB=${POSTGRESDB}
       - CORE_SERVICE_URL=${CORE_SERVICE_URL}
       - USER_SERVICE_URL=${USER_SERVICE_URL}
       - KEYCLOAK_URL=${KEYCLOAK_URL}
@@ -189,7 +193,7 @@ services:
 
   academi-ui:
     image: sever3d/academichain-ui
-    pull_policy: always
+    #pull_policy: always
     ports:
       - "80:80"
     environment:
