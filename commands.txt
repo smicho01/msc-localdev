@@ -1,3 +1,10 @@
 # Create just DB and Schemas. No migrations
 
 docker compose up postgres user-schema-creation items-schema-creation uilogs-schema-creation core-schema-creation -d
+
+
+
+DROP SCHEMA core CASCADE;
+DROP SCHEMA items CASCADE;
+DROP SCHEMA uilogs CASCADE;
+DROP SCHEMA users CASCADE;

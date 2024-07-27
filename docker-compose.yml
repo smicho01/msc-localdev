@@ -8,8 +8,8 @@ x-db-env-conf: &db-env
   DATABASE_NAME: ${POSTGRESDB}
   DATABASE_USERNAME: ${POSTGRESUSER}
   DATABASE_PASSWORD: ${POSTGRESPASSWORD}
-  DATABASE_ENDPOINT: postgres
-  DATABASE_PORT: 5432
+  DATABASE_ENDPOINT: ${POSTGRESHOST}
+  DATABASE_PORT: ${POSTGRESPORT}
 
 x-db-schema-creation: &db-schema-creation
   image: ${POSTGRES_IMAGE}
@@ -29,7 +29,7 @@ services:
   postgres:
     image: ${POSTGRES_IMAGE}
     ports:
-      - "5432:5432"
+      - "${POSTGRESPORT}:5432"
     environment:
       - POSTGRES_PASSWORD=${POSTGRESPASSWORD}
       - POSTGRES_USER=${POSTGRESUSER}
@@ -69,7 +69,7 @@ services:
     image: sever3d/academichain-user-database
     pull_policy: always
     command:
-      - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
+      - "--url=jdbc:postgresql://${POSTGRESHOST}:${POSTGRESPORT}/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
       - "--password=${POSTGRESPASSWORD}"
       - "--changeLogFile=changelog/db.changelog-main.yml"
@@ -84,7 +84,7 @@ services:
     image: sever3d/academichain-item-database
     pull_policy: always
     command:
-      - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
+      - "--url=jdbc:postgresql://${POSTGRESHOST}:${POSTGRESPORT}/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
       - "--password=${POSTGRESPASSWORD}"
       - "--changeLogFile=changelog/db.changelog-main.yml"
@@ -99,7 +99,7 @@ services:
     image: sever3d/academichain-core-database
     pull_policy: always
     command:
-      - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
+      - "--url=jdbc:postgresql://${POSTGRESHOST}:${POSTGRESPORT}/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
       - "--password=${POSTGRESPASSWORD}"
       - "--changeLogFile=changelog/db.changelog-main.yml"
@@ -114,7 +114,7 @@ services:
     image: sever3d/academichain-ui-database
     pull_policy: always
     command:
-      - "--url=jdbc:postgresql://${POSTGRESHOST}:5432/${POSTGRESDB}"
+      - "--url=jdbc:postgresql://${POSTGRESHOST}:${POSTGRESPORT}/${POSTGRESDB}"
       - "--username=${POSTGRESUSER}"
       - "--password=${POSTGRESPASSWORD}"
       - "--changeLogFile=changelog/db.changelog-main.yml"
@@ -128,11 +128,12 @@ services:
   # Services
   academi-core-service:
     image: sever3d/academichain-core-service
-    #pull_policy: always
+    pull_policy: always
     ports:
       - "9090:9090"
     environment:
       - POSTGRESHOST=${POSTGRESHOST}
+      - POSTGRESPORT=${POSTGRESPORT}
       - POSTGRESUSER=${POSTGRESUSER}
       - POSTGRESPASSWORD=${POSTGRESPASSWORD}
       - POSTGRESDB=${POSTGRESDB}
@@ -156,6 +157,7 @@ services:
       - "9091:9091"
     environment:
       - POSTGRESHOST=${POSTGRESHOST}
+      - POSTGRESPORT=${POSTGRESPORT}
       - POSTGRESUSER=${POSTGRESUSER}
       - POSTGRESPASSWORD=${POSTGRESPASSWORD}
       - POSTGRESDB=${POSTGRESDB}
@@ -171,11 +173,12 @@ services:
 
   academi-item-service:
     image: sever3d/academichain-item-service
-    #pull_policy: always
+    pull_policy: always
     ports:
       - "9092:9092"
     environment:
       - POSTGRESHOST=${POSTGRESHOST}
+      - POSTGRESPORT=${POSTGRESPORT}
       - POSTGRESUSER=${POSTGRESUSER}
       - POSTGRESPASSWORD=${POSTGRESPASSWORD}
       - POSTGRESDB=${POSTGRESDB}
@@ -192,7 +195,7 @@ services:
 
   academi-ui:
     image: sever3d/academichain-ui
-    #pull_policy: always
+    pull_policy: always
     ports:
       - "80:80"
     environment:
