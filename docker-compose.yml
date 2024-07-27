@@ -18,32 +18,32 @@ x-db-schema-creation: &db-schema-creation
   environment:
     <<: *db-env
   entrypoint: ["/sql/create-schema.sh"]
-  # depends_on:
-  #   postgres:
-  #     condition: service_healthy
+  depends_on:
+    postgres:
+      condition: service_healthy
   networks:
     - msc
 
 
 services:
-  # postgres:
-  #   image: ${POSTGRES_IMAGE}
-  #   ports:
-  #     - "${POSTGRESPORT}:5432"
-  #   environment:
-  #     - POSTGRES_PASSWORD=${POSTGRESPASSWORD}
-  #     - POSTGRES_USER=${POSTGRESUSER}
-  #     - POSTGRES_DB=${POSTGRESDB}
-  #   networks:
-  #     - msc
-  #   healthcheck:
-  #     test: ["CMD", "psql", "-U", "${POSTGRESUSER}", "-d", "${POSTGRESDB}"]
-  #     interval: 500ms
-  #     timeout: 1s
-  #     retries: 5
-  #   volumes:
-  #     - dbdata:/var/lib/postgresql/data
-  #   restart: always
+  postgres:
+    image: ${POSTGRES_IMAGE}
+    ports:
+      - "${POSTGRESPORT}:5432"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRESPASSWORD}
+      - POSTGRES_USER=${POSTGRESUSER}
+      - POSTGRES_DB=${POSTGRESDB}
+    networks:
+      - msc
+    healthcheck:
+      test: ["CMD", "psql", "-U", "${POSTGRESUSER}", "-d", "${POSTGRESDB}"]
+      interval: 500ms
+      timeout: 1s
+      retries: 5
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    restart: always
 
 
   # Create DB schemas
