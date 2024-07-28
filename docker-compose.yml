@@ -144,6 +144,7 @@ services:
       - ENCRYPTION_KEY=${ENCRYPTION_KEY}
       - KEYCLOAK_SECRET=${KEYCLOAK_SECRET}
       - BLOCKCHAIN_API_SECRET=${BLOCKCHAIN_API_SECRET}
+      - BLOCKCHAIN_GATE_URL=${BLOCKCHAIN_GATE_URL}
     depends_on:
       - core-database-migrations
     networks:
