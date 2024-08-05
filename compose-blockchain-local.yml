@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+
+  academi-seed-server-1:
+    image: 'sever3d/blockchainseedserver'
+    ports:
+    - '3030:3030'
+    restart: always
+    environment:
+      - PROFILE=dev
+      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3040
+
+  academi-seed-server-2:
+    image: 'sever3d/blockchainseedserver'
+    ports:
+    - '3040:3030'
+    restart: always
+    environment:
+      - PROFILE=dev
+      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3040
+
+  academi-sevchain-1:
+    image: 'sever3d/blockchain:latest'
+    ports:
+    - '3007:3001'
+    - '5005:5001'
+    restart: always
+    environment:
+      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3040
+      - PROFILE=dev
+      - PEERS=ws://academi-sevchain-2:5001
+
+  academi-sevchain-2:
+    image: 'sever3d/blockchain:latest'
+    ports:
+    - '3008:3001'
+    - '5006:5001'
+    restart: always
+    environment:
+      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3040
+      - PROFILE=dev
+      - PEERS=ws://academi-sevchain-1:5001

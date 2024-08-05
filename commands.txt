@@ -8,3 +8,7 @@ DROP SCHEMA core CASCADE;
 DROP SCHEMA items CASCADE;
 DROP SCHEMA uilogs CASCADE;
 DROP SCHEMA users CASCADE;
+
+
+
+docker-compose --env-file .env.dev up
