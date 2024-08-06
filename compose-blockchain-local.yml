@@ -8,7 +8,13 @@ services:
     restart: always
     environment:
       - PROFILE=dev
-      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3040
+      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3030
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "--quiet", "http://localhost:3030/healthcheck"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 10s
 
   academi-seed-server-2:
     image: 'sever3d/blockchainseedserver'
@@ -17,26 +23,42 @@ services:
     restart: always
     environment:
       - PROFILE=dev
-      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3040
+      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3030
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "--quiet", "http://localhost:3030/healthcheck"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 10s
 
   academi-sevchain-1:
     image: 'sever3d/blockchain:latest'
     ports:
-    - '3007:3001'
-    - '5005:5001'
+    - '3001:3001'
+    - '5001:5001'
     restart: always
     environment:
-      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3040
+      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3030
       - PROFILE=dev
-      - PEERS=ws://academi-sevchain-2:5001
+      - PEERS=ws://academi-sevchain-2:5002
+    depends_on:
+      academi-seed-server-1:
+        condition: service_healthy
+      academi-seed-server-2:
+        condition: service_healthy
 
   academi-sevchain-2:
     image: 'sever3d/blockchain:latest'
     ports:
-    - '3008:3001'
-    - '5006:5001'
+    - '3002:3001'
+    - '5002:5001'
     restart: always
     environment:
-      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3040
+      - SEEDSERVERS_LIST=http://academi-seed-server-1:3030,http://academi-seed-server-2:3030
       - PROFILE=dev
       - PEERS=ws://academi-sevchain-1:5001
+    depends_on:
+      academi-seed-server-1:
+        condition: service_healthy
+      academi-seed-server-2:
+        condition: service_healthy
