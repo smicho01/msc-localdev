@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  nlp-api:
+    container_name: nlp-api-moje
+    image: sever3d/hugginface-embedding-api
+    pull_policy: always    
+    ports:
+      - "9050:9050"
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+      - API_TOKEN=${API_TOKEN}
+      - MONGO_CONN_STRING=${MONDO_CONN_STRING}
+      - MONGO_COLLECTION=${MONGO_COLLECTION}
