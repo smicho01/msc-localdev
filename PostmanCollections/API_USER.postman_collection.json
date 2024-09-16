@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "fa9cc3e5-6821-49c7-af36-34c6c571e1f5",
+		"name": "API_USER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11729080",
+		"_collection_link": "https://speeding-water-207383.postman.co/workspace/MASTERS-PROJECT~2f8dc211-cf07-4f2d-ac3d-829d50562c5b/collection/11729080-fa9cc3e5-6821-49c7-af36-34c6c571e1f5?action=share&source=collection_link&creator=11729080"
+	},
+	"item": [
+		{
+			"name": "V1",
+			"item": [
+				{
+					"name": "FRIENDS",
+					"item": [
+						{
+							"name": "Get user friends",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{student-api-host}}/api/v1/friends/d727c038-4250-4c27-8c61-2c9027883b21",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{student-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"friends",
+										"d727c038-4250-4c27-8c61-2c9027883b21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user friends request received",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{student-api-host}}/api/v1/friends/requests/d727c038-4250-4c27-8c61-2c9027883b21",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{student-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"friends",
+										"requests",
+										"d727c038-4250-4c27-8c61-2c9027883b21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send friend request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"requestingUserId\": \"8d40ca7e-7d86-40dd-8015-669d0d69f53f\",\n    \"requestedUserId\": \"d727c038-4250-4c27-8c61-2c9027883b21\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{student-api-host}}/api/v1/friends/request",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{student-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"friends",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MESSAGE",
+					"item": [
+						{
+							"name": "Get all for user Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{student-api-host}}/api/v1/message/408eea17-42e0-446c-81a2-c682a15c3a80",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{student-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"message",
+										"408eea17-42e0-446c-81a2-c682a15c3a80"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add message",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fromId\": \"408eea17-42e0-446c-81a2-c682a15c3a80\",\n    \"toId\": \"c5d785c0-8af1-4504-ae55-aa9153b0d0cb\",\n    \"content\": \"Msg 1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{student-api-host}}/api/v1/message",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{student-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"message"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update message",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"read\": true,\n   \"content\": \"Siemanko Ziom!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{student-api-host}}/api/v1/message/408eea17-42e0-446c-81a2-c682a15c3a12",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{student-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"message",
+										"408eea17-42e0-446c-81a2-c682a15c3a12"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update all read between users",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"read\": true,\n   \"content\": \"Siemanko Ziom!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{student-api-host}}/api/v1/message/updatereadall/408eea17-42e0-446c-81a2-c682a15c3a80/c5d785c0-8af1-4504-ae55-aa9153b0d0cb",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{student-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"message",
+										"updatereadall",
+										"408eea17-42e0-446c-81a2-c682a15c3a80",
+										"c5d785c0-8af1-4504-ae55-aa9153b0d0cb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete message",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{student-api-host}}/api/v1/message/408eea17-42e0-446c-81a2-c682a15c3a12",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{student-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"message",
+										"408eea17-42e0-446c-81a2-c682a15c3a12"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all user by field value",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/js",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user?field=username&value=johndo01",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "username"
+								},
+								{
+									"key": "value",
+									"value": "johndo01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user/b02d0bcc-bcd6-40c1-b10d-8e4cf24c67c7",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"b02d0bcc-bcd6-40c1-b10d-8e4cf24c67c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user/c6da529f-facf-41cb-a74f-6c4c98157b8c",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"c6da529f-facf-41cb-a74f-6c4c98157b8c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user by visibleUsername LIKE",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user/username/like/pan?collegeId=69c72387-4477-4720-af08-1acf62d81470",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"username",
+								"like",
+								"pan"
+							],
+							"query": [
+								{
+									"key": "collegeId",
+									"value": "69c72387-4477-4720-af08-1acf62d81470"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"johndo012\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"jdoe@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user Field",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user/c6da529f-facf-41cb-a74f-6c4c98157b8c?field=tokens&value=54",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"c6da529f-facf-41cb-a74f-6c4c98157b8c"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "tokens"
+								},
+								{
+									"key": "value",
+									"value": "54"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user Field - RANK",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user/d727c038-4250-4c27-8c61-2c9027883b21?field=rank&value=0",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"d727c038-4250-4c27-8c61-2c9027883b21"
+							],
+							"query": [
+								{
+									"key": "field",
+									"value": "rank"
+								},
+								{
+									"key": "value",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user blockchain keys",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/user/getkeys/8d40ca7e-7d86-40dd-8015-669d0d69f53f",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"getkeys",
+								"8d40ca7e-7d86-40dd-8015-669d0d69f53f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/generatename",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"generatename"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate usernames list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{student-api-host}}/api/v1/generatenames?count=80",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{student-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"generatenames"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "80"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{protocol}}://{{student-api-host}}/api/v1/healthcheck",
+					"protocol": "{{protocol}}",
+					"host": [
+						"{{student-api-host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

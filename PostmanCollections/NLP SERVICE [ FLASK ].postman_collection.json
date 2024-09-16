@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "a2ce7b35-05d2-42ec-b494-973c02940ed4",
+		"name": "NLP SERVICE [ FLASK ]",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11729080",
+		"_collection_link": "https://speeding-water-207383.postman.co/workspace/MASTERS-PROJECT~2f8dc211-cf07-4f2d-ac3d-829d50562c5b/collection/11729080-a2ce7b35-05d2-42ec-b494-973c02940ed4?action=share&source=collection_link&creator=11729080"
+	},
+	"item": [
+		{
+			"name": "Create Embedding",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-tokens",
+						"value": "{{embedding_api_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"How to build B++ Tree indexes in Postgres DB\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{embedding_api_url}}/embedding",
+					"host": [
+						"{{embedding_api_url}}"
+					],
+					"path": [
+						"embedding"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Embedding Mongo Store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-tokens",
+						"value": "{{embedding_api_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"question\": \"How to build B++ Tree indexes in Postgres DB\",\n    \"questionId\": \"abc-123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{embedding_api_url}}/embedding/mongostore",
+					"host": [
+						"{{embedding_api_url}}"
+					],
+					"path": [
+						"embedding",
+						"mongostore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search question by embedding",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-tokens",
+						"value": "{{embedding_api_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"question\": \"OpenSearch\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{embedding_api_url}}/embedding/search?limit=8",
+					"host": [
+						"{{embedding_api_url}}"
+					],
+					"path": [
+						"embedding",
+						"search"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Question",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-tokens",
+						"value": "{{embedding_api_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"How to build B++ Tree indexes in Postgres DB.\",\n    \"body\": \"This is valid en\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{embedding_api_url}}/validate/question",
+					"host": [
+						"{{embedding_api_url}}"
+					],
+					"path": [
+						"validate",
+						"question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate text",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-tokens",
+						"value": "{{embedding_api_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"How to build B++ Tree indexes in Postgres DB\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{embedding_api_url}}/validatetext",
+					"host": [
+						"{{embedding_api_url}}"
+					],
+					"path": [
+						"validatetext"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check text toxicity score",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-tokens",
+						"value": "{{embedding_api_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"How to build B++ Tree indexes in Postgres DB.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{embedding_api_url}}/toxicity",
+					"host": [
+						"{{embedding_api_url}}"
+					],
+					"path": [
+						"toxicity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{embedding_api_url}}/healthcheck",
+					"host": [
+						"{{embedding_api_url}}"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

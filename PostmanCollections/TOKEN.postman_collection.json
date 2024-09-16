@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "3b4da770-e014-49d8-932d-4d22dabf709f",
+		"name": "TOKEN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11729080",
+		"_collection_link": "https://speeding-water-207383.postman.co/workspace/MASTERS-PROJECT~2f8dc211-cf07-4f2d-ac3d-829d50562c5b/collection/11729080-3b4da770-e014-49d8-932d-4d22dabf709f?action=share&source=collection_link&creator=11729080"
+	},
+	"item": [
+		{
+			"name": "GET Token via UI username and password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Response should be 200\"] = responseCode.code === 200;",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"token\", jsonData.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "smicho01",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "academichain_ui",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://sever3d.synology.me:7080/auth/realms/{{realm}}/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"sever3d",
+						"synology",
+						"me"
+					],
+					"port": "7080",
+					"path": [
+						"auth",
+						"realms",
+						"{{realm}}",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Token from API client",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Response should be 200\"] = responseCode.code === 200;",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"token\", jsonData.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "smicho01",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "academichain_api",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{keycloak-client-secret}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://sever3d.synology.me:7080/auth/realms/{{realm}}/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"sever3d",
+						"synology",
+						"me"
+					],
+					"port": "7080",
+					"path": [
+						"auth",
+						"realms",
+						"{{realm}}",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Certs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Response should be 200\"] = responseCode.code === 200;",
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"token\", jsonData.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "smicho01",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "academichain_api",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{keycloak-client-secret}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://sever3d.synology.me:7080/auth/realms/{{realm}}/protocol/openid-connect/certs",
+					"protocol": "http",
+					"host": [
+						"sever3d",
+						"synology",
+						"me"
+					],
+					"port": "7080",
+					"path": [
+						"auth",
+						"realms",
+						"{{realm}}",
+						"protocol",
+						"openid-connect",
+						"certs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

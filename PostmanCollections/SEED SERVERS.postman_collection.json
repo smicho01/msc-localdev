@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "3e46002e-ba71-439a-b43c-717c22a60da0",
+		"name": "SEED SERVERS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11729080",
+		"_collection_link": "https://speeding-water-207383.postman.co/workspace/MASTERS-PROJECT~2f8dc211-cf07-4f2d-ac3d-829d50562c5b/collection/11729080-3e46002e-ba71-439a-b43c-717c22a60da0?action=share&source=collection_link&creator=11729080"
+	},
+	"item": [
+		{
+			"name": "SeedServers",
+			"item": [
+				{
+					"name": "local",
+					"item": [
+						{
+							"name": "List all SS 3030",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SEED_SERVER1}}/seedserver/list",
+									"host": [
+										"{{SEED_SERVER1}}"
+									],
+									"path": [
+										"seedserver",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all SS 3040",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{SEED_1_HOST}}:3040/seedserver/list",
+									"protocol": "http",
+									"host": [
+										"{{SEED_1_HOST}}"
+									],
+									"port": "3040",
+									"path": [
+										"seedserver",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all SS 3050",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://{{SEED_1_HOST}}:3050/seedserver/list",
+									"protocol": "http",
+									"host": [
+										"{{SEED_1_HOST}}"
+									],
+									"port": "3050",
+									"path": [
+										"seedserver",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register seed server",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://{{SEED_1_HOST}}:{{SEED_1_PORT}}/seedserver/register",
+							"protocol": "http",
+							"host": [
+								"{{SEED_1_HOST}}"
+							],
+							"port": "{{SEED_1_PORT}}",
+							"path": [
+								"seedserver",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all known SS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SEED_SERVER1}}/seedserver/list",
+							"host": [
+								"{{SEED_SERVER1}}"
+							],
+							"path": [
+								"seedserver",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Healthcheck S1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SEED_SERVER1}}/healthcheck",
+							"host": [
+								"{{SEED_SERVER1}}"
+							],
+							"path": [
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Healthcheck S2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SEED_SERVER2}}/healthcheck",
+							"host": [
+								"{{SEED_SERVER2}}"
+							],
+							"path": [
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List registered SBC ws  nodes S1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SEED_SERVER1}}/seedserver/bcnodes",
+							"host": [
+								"{{SEED_SERVER1}}"
+							],
+							"path": [
+								"seedserver",
+								"bcnodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List registered SBC ws  nodes S2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SEED_SERVER2}}/seedserver/bcnodes",
+							"host": [
+								"{{SEED_SERVER2}}"
+							],
+							"path": [
+								"seedserver",
+								"bcnodes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BlockchainNodes",
+			"item": [
+				{
+					"name": "Register bc node",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{SEED_SERVER1}}/blockchainnode/register?node=http://localhost:5001",
+							"host": [
+								"{{SEED_SERVER1}}"
+							],
+							"path": [
+								"blockchainnode",
+								"register"
+							],
+							"query": [
+								{
+									"key": "node",
+									"value": "http://localhost:5001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get registered BC nodes server 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SEED_SERVER1}}/blockchainnode/getnodes",
+							"host": [
+								"{{SEED_SERVER1}}"
+							],
+							"path": [
+								"blockchainnode",
+								"getnodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get registered BC nodes server 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SEED_SERVER2}}/blockchainnode/getnodes",
+							"host": [
+								"{{SEED_SERVER2}}"
+							],
+							"path": [
+								"blockchainnode",
+								"getnodes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

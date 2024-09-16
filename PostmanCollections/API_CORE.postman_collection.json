@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "e555ae90-a89c-453d-92cb-adce4678bc2c",
+		"name": "API_CORE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11729080",
+		"_collection_link": "https://speeding-water-207383.postman.co/workspace/MASTERS-PROJECT~2f8dc211-cf07-4f2d-ac3d-829d50562c5b/collection/11729080-e555ae90-a89c-453d-92cb-adce4678bc2c?action=share&source=collection_link&creator=11729080"
+	},
+	"item": [
+		{
+			"name": "V1",
+			"item": [
+				{
+					"name": "Get all  transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{core-api-host}}/api/v1/transaction",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{core-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all  transactions for Wallet",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{core-api-host}}/api/v1/transaction/wallet/04dc86f7555426e02bf28dd65007afad385099aee3501f0f52b7b5bcc58d1dafbccded15f720f7f9b4392b7240af700f2faca751c50cb4a104cad618cad3c3d419",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{core-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"wallet",
+								"04dc86f7555426e02bf28dd65007afad385099aee3501f0f52b7b5bcc58d1dafbccded15f720f7f9b4392b7240af700f2faca751c50cb4a104cad618cad3c3d419"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get wallet balance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{core-api-host}}/api/v1/wallet/042eea5d050fee6ccb32ef711b0905420b31438215b11c690e8f851bd3cbe4b03c4fa47c6b46382a069f195a01e7dd48bd36b1c6e31b960523e9d33ba6ec896389",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{core-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallet",
+								"042eea5d050fee6ccb32ef711b0905420b31438215b11c690e8f851bd3cbe4b03c4fa47c6b46382a069f195a01e7dd48bd36b1c6e31b960523e9d33ba6ec896389"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

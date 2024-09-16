@@ -1,0 +1,1045 @@
+{
+	"info": {
+		"_postman_id": "deb6a0c3-b716-4588-86dc-640f25db32cd",
+		"name": "API_ITEM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11729080",
+		"_collection_link": "https://speeding-water-207383.postman.co/workspace/MASTERS-PROJECT~2f8dc211-cf07-4f2d-ac3d-829d50562c5b/collection/11729080-deb6a0c3-b716-4588-86dc-640f25db32cd?action=share&source=collection_link&creator=11729080"
+	},
+	"item": [
+		{
+			"name": "V1",
+			"item": [
+				{
+					"name": "QUESTIONS",
+					"item": [
+						{
+							"name": "Get all question",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.environment.set(\"questionId\", jsonData[0].id);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question?limit=4",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question/{{questionId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question",
+										"{{questionId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get similar questions [Embeddings]",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"question\": \"Cat\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question/similar",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question",
+										"similar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by Title LIKE",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question/like/tree",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question",
+										"like",
+										"tree"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all question Short",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question/short?status=pending&limit=100",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question",
+										"short"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending"
+										},
+										{
+											"key": "limit",
+											"value": "100"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by user Short",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question/user/1e56af1d-422a-49b5-9683-3ef0395d44d7/short",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question",
+										"user",
+										"1e56af1d-422a-49b5-9683-3ef0395d44d7",
+										"short"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by user",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question/user/1e56af1d-422a-49b5-9683-3ef0395d44d7",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question",
+										"user",
+										"1e56af1d-422a-49b5-9683-3ef0395d44d7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by TAG ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question/tagid/{{tagId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question",
+										"tagid",
+										"{{tagId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get by TAG Name",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question/tagname/{{tagName}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question",
+										"tagname",
+										"{{tagName}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add question",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.environment.set(\"questionId\", jsonData.id);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"How to sort results in OpenSearch 3\",\n    \"content\": \"I need help with OpenSerch ...\",\n    \"userId\": \"8d40ca7e-7d86-40dd-8015-669d0d69f53f\",\n    \"userName\": \"ReflectingPanther\",\n    \"collegeId\": \"69c72387-4477-4720-af08-1acf62d81470\",\n    \"moduleId\": \"27aeff8a-3cf5-438d-91e9-0ac59061e94c\",\n    \"status\": \"PENDING\",\n    \"tags\": [\n        \"java\",\n        \"opensearch\",\n        \"Turbo Pascal\",\n        \"abc\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/question",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"question"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ANSWERS",
+					"item": [
+						{
+							"name": "Get all answers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/answer?status=ACTIVE",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"answer"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "ACTIVE"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get answer by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/answer/08177328-cf0d-4d3d-922b-b98e29e7f2b6",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"answer",
+										"08177328-cf0d-4d3d-922b-b98e29e7f2b6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all answers for question Copy",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/answer/3d9d8092-b95d-4106-866f-96ef24902a2b",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"answer",
+										"3d9d8092-b95d-4106-866f-96ef24902a2b"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all answers for question with STATUS",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/answer/3d9d8092-b95d-4106-866f-96ef24902a2b/status/pending",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"answer",
+										"3d9d8092-b95d-4106-866f-96ef24902a2b",
+										"status",
+										"pending"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all with status ACTIVE and all statuses for userId",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/answer/a237749d-2e1e-412c-88bd-81bf307852e8/user/8d40ca7e-7d86-40dd-8015-669d0d69f53f",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"answer",
+										"a237749d-2e1e-412c-88bd-81bf307852e8",
+										"user",
+										"8d40ca7e-7d86-40dd-8015-669d0d69f53f"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add answer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\": \"My answer wow 2 ! ...\",\n    \"questionId\": \"e25b727b-3f32-457e-9c59-3d286706fdcc\",\n    \"userId\": \"8d40ca7e-7d86-40dd-8015-669d0d69f53f\",\n    \"userName\" : \"Abbradab\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/answer",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"answer"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update answer",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"best\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/answer/08177328-cf0d-4d3d-922b-b98e29e7f2b6",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"answer",
+										"08177328-cf0d-4d3d-922b-b98e29e7f2b6"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "COLLEGE",
+					"item": [
+						{
+							"name": "Add College",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Birkbeck\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/college",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"college"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MODULE",
+					"item": [
+						{
+							"name": "Add module",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Birkbeck\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/module",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"module"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all modules",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Birkbeck\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/module",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"module"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get module by  ID",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Birkbeck\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/module/27aeff8a-3cf5-438d-91e9-0ac59061e94c",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"module",
+										"27aeff8a-3cf5-438d-91e9-0ac59061e94c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get modules by college",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Birkbeck\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/module/college/69c72387-4477-4720-af08-1acf62d81470",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"module",
+										"college",
+										"69c72387-4477-4720-af08-1acf62d81470"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TAG",
+					"item": [
+						{
+							"name": "Get all tags",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.environment.set(\"tagId\", jsonData[0].id);",
+											"pm.environment.set(\"tagName\", jsonData[0].name);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/tag",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add tag",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.environment.set(\"tagId\", jsonData.id);",
+											"pm.environment.set(\"tagName\", jsonData.name);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Trivy\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/tag",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tag"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all tags by NAME",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/tag/name/{{tagName}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tag",
+										"name",
+										"{{tagName}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all tags by ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/tag/{{tagId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tag",
+										"{{tagId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all tags by Question ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{protocol}}://{{item-api-host}}/api/v1/tag/question/{{questionId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{item-api-host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tag",
+										"question",
+										"{{questionId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{item-api-host}}/api/v1/item",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{item-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{item-api-host}}/api/v1/item/3d9d8092-b95d-4106-866f-96ef24902a2b",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{item-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"item",
+								"3d9d8092-b95d-4106-866f-96ef24902a2b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{item-api-host}}/api/v1/item/user/7cef2a1b-5ef9-4fc6-88fe-b2572f19bf65",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{item-api-host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"item",
+								"user",
+								"7cef2a1b-5ef9-4fc6-88fe-b2572f19bf65"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{item-api-host}}/api/v1/healthcheck",
+					"host": [
+						"{{item-api-host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

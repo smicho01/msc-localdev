@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "89bfbc44-0be5-4d36-aa3b-baccdd784588",
+		"name": "ITEM EXCHANGER APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11729080",
+		"_collection_link": "https://speeding-water-207383.postman.co/workspace/MASTERS-PROJECT~2f8dc211-cf07-4f2d-ac3d-829d50562c5b/collection/11729080-89bfbc44-0be5-4d36-aa3b-baccdd784588?action=share&source=collection_link&creator=11729080"
+	},
+	"item": [
+		{
+			"name": "SERVER",
+			"item": [
+				{
+					"name": "Get BOOKS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "super-secret-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{book_sale_api_url}}/books",
+							"host": [
+								"{{book_sale_api_url}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get BOOKS by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{book_sale_api_url}}/books/669d083d080e4327fbaf175a",
+							"host": [
+								"{{book_sale_api_url}}"
+							],
+							"path": [
+								"books",
+								"669d083d080e4327fbaf175a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add BOOK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"This is a bit longer title for the book and author name Version 3\",\n    \"type\": \"Book\",\n    \"price\": 12,\n    \"description\": \"This is the desc 3 ...\",\n    \"username\": \"Lovely Babook\",\n    \"wallet\": \"seller-124-def\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{book_sale_api_url}}/books",
+							"host": [
+								"{{book_sale_api_url}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update BOOK",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"This is a bit longer title for the book and author name Version 3\",\n    \"type\": \"Book\",\n    \"price\": 12,\n    \"description\": \"This is the desc 3 ...\",\n    \"username\": \"Lovely Babook\",\n    \"wallet\": \"wallet-124-def\",\n    \"sold\": true,\n    \"buyer\": \"waller-666\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{book_sale_api_url}}/books/669d37878580dad89b38de41",
+							"host": [
+								"{{book_sale_api_url}}"
+							],
+							"path": [
+								"books",
+								"669d37878580dad89b38de41"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
